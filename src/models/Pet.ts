@@ -1,4 +1,5 @@
 import { builder } from '../builder';
+import { prisma } from '../db';
 
 builder.prismaObject('Pet', {
   fields: (t) => ({
@@ -28,3 +29,28 @@ builder.prismaObject('Pet', {
     }),
   }),
 });
+
+builder.queryField('allPets', (t) =>
+  t.prismaField({
+    type: ['Pet'],
+    resolve: async (query, root, args, context, info) => {
+      return prisma.pet.findMany({});
+    },
+  })
+);
+
+builder.queryField('petsByLocation', (t) =>
+  t.prismaField({
+    type: ['Pet'],
+    args: {
+      location: t.arg.string(),
+    },
+    resolve: async (query, root, args, context, info) => {
+      const { location } = args;
+
+      return prisma.pet.findMany({
+        where: { location: { contains: location as string } },
+      });
+    },
+  })
+);
