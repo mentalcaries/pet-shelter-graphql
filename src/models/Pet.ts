@@ -54,3 +54,18 @@ builder.queryField('petsByLocation', (t) =>
     },
   })
 );
+builder.queryField('petsByType', (t) =>
+  t.prismaField({
+    type: ['Pet'],
+    args: {
+      type: t.arg.string(),
+    },
+    resolve: async (query, root, args, context, info) => {
+      const { type } = args;
+
+      return prisma.pet.findMany({
+        where: { type: { equals: type as string } },
+      });
+    },
+  })
+);

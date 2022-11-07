@@ -11,5 +11,5 @@ const server = createServer({
 server
   .start()
   .then(() =>
-    console.log(`🚀 Server running at http://locahost:${port}/graphql`)
+    console.log(`🚀 Server running at http://localhost:${port}/graphql`)
   );

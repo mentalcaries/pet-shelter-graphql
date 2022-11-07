@@ -5,12 +5,12 @@ async function main() {
 
   await prisma.pet.create({
     data: {
-      name: 'Ruff',
+      name: 'Whiskers',
       age: 1,
       type: 'dog',
-      gender: 'male',
-      location: 'Penal, Trinidad',
-      breed: 'ratter',
+      gender: 'female',
+      location: 'Couva, Trinidad',
+      breed: 'shaggy',
       shelterId: 1,
       photo:
         'https://www.akc.org/wp-content/uploads/2017/04/Lagotto-Romangolo-Tongue-Out.jpg',
@@ -21,15 +21,15 @@ async function main() {
 
   await prisma.pet.create({
     data: {
-      name: 'Martha',
+      name: 'Zeo',
       age: 1,
-      type: 'dog',
+      type: 'rabbit',
       gender: 'female',
-      location: 'Penal, Trinidad',
-      breed: 'German Sheppy',
+      location: 'Charlotte, Tobago',
+      // breed: 'German Sheppy',
       shelterId: 1,
       photo:
-        'http://cdn.akc.org/content/article-body-image/keeshond_dog_pictures.jpg',
+        'https://www.vetcarepethospital.ca/wp-content/uploads/sites/247/2022/03/petrabbitcare-1-scaled.jpg',
     },
   });
 
