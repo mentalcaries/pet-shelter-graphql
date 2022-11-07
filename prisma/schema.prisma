@@ -5,6 +5,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator pothos {
+  provider = "prisma-pothos-types"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -20,7 +24,7 @@ model Pet {
   location    String
   shelterId   Int
   shelter     Shelter @relation(fields: [shelterId], references: [id])
-  breed       String?
+  breed       String? 
   photo       String
   vaccinated  Boolean?  @default(false)
   neutered    Boolean?  @default(false)
@@ -34,7 +38,7 @@ model User {
   name        String
   email       String   @unique
   type        UserType @default(INDIVIDUAL)
-  location    String?
+  location    String
 }
 
 model Shelter {
